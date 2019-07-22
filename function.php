@@ -13,7 +13,7 @@ class UnableToMakeSoundException extends UnknownActionException {}
 
 abstract class Dog {
     public function sound() {
-        echo json_encode( "woof, woof");
+        echo 'woof, woof';
     }
     public function hunt() { throw new Exception("Not implemented?"); }
 }
@@ -49,6 +49,12 @@ class RubberDachshund extends Dog {
         throw new UnableToHuntException("I'm qute useful for your bath, not the hunting adventure");
     }
 }
+
+/**
+ * @param $breed
+ * @return Dachshund|Mops|PlushLabr|RubberDachshund|ShibuInu
+ * @throws UnknownBreedException
+ */
 function dog_fabric($breed) {
     switch ($breed) {
         case "shibu-inu":
@@ -65,7 +71,6 @@ function dog_fabric($breed) {
             throw new UnknownBreedException("Unknown breed `".$breed."`");
     }
 }
-
 $argv = explode(" ", $_POST['message']);
 
 
